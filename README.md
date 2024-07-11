@@ -11,11 +11,14 @@ OneOnn is your one-stop solution for all needs—fun, business, career, kids, an
 ## Features
 
 <p style="font-size: 18px;">
-- **Fun:** Access a variety of entertainment options, from games to social networking.<br>
-- **Business:** Tools to manage and grow your business, including analytics and customization options.<br>
-- **Career:** Resources and services to advance your professional life, such as portfolio management and job search tools.<br>
-- **Kids:** Safe and engaging content for children, including educational resources and entertainment.
+<ul>
+  <li><strong>Fun:</strong> Access a variety of entertainment options, from games to social networking.</li>
+  <li><strong>Business:</strong> Tools to manage and grow your business, including analytics and customization options.</li>
+  <li><strong>Career:</strong> Resources and services to advance your professional life, such as portfolio management and job search tools.</li>
+  <li><strong>Kids:</strong> Safe and engaging content for children, including educational resources and entertainment.</li>
+</ul>
 </p>
+
 
 ## Getting Started
 
