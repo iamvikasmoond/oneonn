@@ -1,5 +1,5 @@
 <p align="left">
-  <img src="4.png" alt="OneOnn Logo" style="width: 100px; height: auto; border-radius: 20px;"> </p>
+  <img src="Files/Github/OneOne Logo File/OneOnn logo transparent.png" alt="OneOnn Logo" style="width: 100px; height: auto; border-radius: 20px;"> </p>
   
 # OneOnn 
 
