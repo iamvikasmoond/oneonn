@@ -1,28 +1,81 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
 header {
-    background: #f8f8f8;
-    padding: 20px;
+    background-color: #3F3AB0;
+    color: white;
+    padding: 10px 0;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.logo {
-    width: 200px;
+.logo img {
+    width: 150px;
     height: auto;
     border-radius: 10px;
 }
 
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Main Content Styles */
 main {
     padding: 20px;
 }
 
 h1, h2 {
-    color: #333;
+    color: #3F3AB0;
+}
+
+.intro, .features, .contact {
+    margin-bottom: 40px;
 }
 
 ul {
@@ -53,7 +106,7 @@ ul li {
 .contact button {
     margin-top: 10px;
     padding: 10px;
-    background: #007bff;
+    background-color: #3F3AB0;
     color: white;
     border: none;
     border-radius: 5px;
@@ -61,5 +114,39 @@ ul li {
 }
 
 .contact button:hover {
-    background: #0056b3;
+    background-color: #2c2a8a;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .nav-active {
+        display: flex;
+    }
+
+    .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .line2 {
+        opacity: 0;
+    }
+
+    .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
 }
