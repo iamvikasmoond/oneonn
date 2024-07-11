@@ -1,14 +1,25 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
 
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Message:', message);
+        burger.classList.toggle('toggle');
+    });
 
-    // Add your GitHub data storage code here
-    alert('Form submitted successfully!');
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        console.log('Name:', name);
+        console.log('Email:', email);
+        console.log('Message:', message);
+
+        // Add your GitHub data storage code here
+        alert('Form submitted successfully!');
+    });
 });
