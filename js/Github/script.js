@@ -1,24 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
+  const nav = document.getElementById('sidebar');
 
-    burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-        burger.classList.toggle('toggle');
-    });
+  nav.addEventListener('mouseenter', () => {
+      nav.classList.add('expanded');
+  });
 
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Message:', message);
-
-        // Add your GitHub data storage code here
-        alert('Form submitted successfully!');
-    });
+  nav.addEventListener('mouseleave', () => {
+      nav.classList.remove('expanded');
+  });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const greetingElem = document.querySelector('.greeting');
+  const date = new Date();
+  const hours = date.getHours();
+
+  let greeting = '';
+
+  if (hours >= 5 && hours < 12) {
+      greeting = 'Good Morning';
+  } else if (hours >= 12 && hours < 17) {
+      greeting = 'Good Afternoon';
+  } else {
+      greeting = 'Good Evening';
+  }
+
+  greetingElem.textContent = greeting;
+});
+
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('expanded');
+}
