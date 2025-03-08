@@ -1,1 +1,133 @@
-//hi
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Background */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Main Container */
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Logo */
+.logo {
+    max-width: 150px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 32px;
+    color: #3F3AB0;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Client Info Section */
+.client-info {
+    background-color: #f4f4f4;
+    padding: 25px;
+    border-left: 4px solid #3F3AB0;
+    margin-top: 40px;
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.client-info h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #3F3AB0;
+}
+
+.client-info a {
+    color: #3F3AB0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.client-info a:hover {
+    text-decoration: underline;
+}
+
+/* Services Section */
+.services {
+    margin-top: 50px;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 26px;
+    color: #3F3AB0;
+    margin-bottom: 30px;
+}
+
+.service-item {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+    border-left: 4px solid #3F3AB0;
+}
+
+.service-item h3 {
+    font-size: 18px;
+    color: #3F3AB0;
+    margin-bottom: 5px;
+}
+
+.service-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Hover Effect */
+.service-item:hover {
+    background-color: #e8e6ff;
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+/* Footer Section */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #999;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
