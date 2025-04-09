@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detection of Application Layer (Layer 7) DDoS Attacks Using NLP on Web Logs</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Layer 7 DDoS Detection Using NLP</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="container">
@@ -13,121 +13,101 @@
             <p>Complete Step-by-Step Guide for Beginners</p>
         </div>
 
-        <div class="step">
+        <div class="step step-1">
             <h2>Step 1: Understand the Problem Statement</h2>
-            <p>
-Layer 7 DDoS attacks target the application layer (HTTP/HTTPS), overloading servers with legitimate-looking traffic. 
-The goal of this project is to detect such patterns using NLP on web server logs to classify behavior as normal or malicious.
-            </p>
+            <p>Layer 7 DDoS attacks target the application layer (HTTP/HTTPS), overloading servers with legitimate-looking traffic. 
+            The goal of this project is to detect such patterns using NLP on web server logs to classify behavior as normal or malicious.</p>
         </div>
 
-        <div class="step">
+        <div class="step step-2">
             <h2>Step 2: Set Up the Project Environment</h2>
-            <p>
-Requirements:
-- Python 3.9+
-- VS Code or Jupyter Notebook
-- Libraries: pandas, numpy, matplotlib, seaborn, scikit-learn, nltk, streamlit
+            <p>Requirements:
+            - Python 3.9+
+            - VS Code or Jupyter Notebook
+            - Libraries: pandas, numpy, matplotlib, seaborn, scikit-learn, nltk, streamlit
 
-Recommended structure:
-project-root/
-├── data/
-├── notebooks/
-├── app/
-├── requirements.txt
-└── README.md
-            </p>
+            Recommended structure:
+            project-root/
+            ├── data/
+            ├── notebooks/
+            ├── app/
+            ├── requirements.txt
+            └── README.md</p>
         </div>
 
-        <div class="step">
+        <div class="step step-3">
             <h2>Step 3: Collect or Simulate Web Logs</h2>
-            <p>
-Use real access logs or simulate data using tools like:
-- Apache Log Generator
-- Python scripts with timestamps and GET/POST requests
+            <p>Use real access logs or simulate data using tools like:
+            - Apache Log Generator
+            - Python scripts with timestamps and GET/POST requests
 
-Sample Log Format:
-192.168.1.10 - - [06/Apr/2025:12:01:22 +0000] "GET /login HTTP/1.1" 200 214
-            </p>
+            Sample Log Format:
+            192.168.1.10 - - [06/Apr/2025:12:01:22 +0000] "GET /login HTTP/1.1" 200 214</p>
         </div>
 
-        <div class="step">
+        <div class="step step-4">
             <h2>Step 4: Load and Parse Logs</h2>
-            <p>
-Use Python's `re` module or `apache_log_parser` to extract features.
+            <p>Use Python's <code>re</code> module or <code>apache_log_parser</code> to extract features.
 
-Regex Example:
-pattern = r'(?P<ip>\\d+.\\d+.\\d+.\\d+) - - \\[(?P<timestamp>.*?)\\] "(?P<method>\\w+) (?P<url>\\S+) HTTP/\\d.\\d" (?P<status>\\d{{3}}) (?P<size>\\d+)'
+            Regex Example:
+            <code>pattern = r'(?P&lt;ip&gt;\\d+.\\d+.\\d+.\\d+) - - \\[(?P&lt;timestamp&gt;.*?)\\] "(?P&lt;method&gt;\\w+) (?P&lt;url&gt;\\S+) HTTP/\\d.\\d" (?P&lt;status&gt;\\d{3}) (?P&lt;size&gt;\\d+)'</code>
 
-Use pandas to store it in DataFrame for further analysis.
-            </p>
+            Use pandas to store it in DataFrame for further analysis.</p>
         </div>
 
-        <div class="step">
+        <div class="step step-5">
             <h2>Step 5: Preprocess the Data</h2>
-            <p>
-- Convert timestamp to datetime
-- Normalize all URL paths (e.g., /Login → /login)
-- Extract temporal features: hour, day, minute
-- Clean status codes and filter bots or irrelevant requests
+            <p>- Convert timestamp to datetime
+            - Normalize all URL paths (e.g., /Login → /login)
+            - Extract temporal features: hour, day, minute
+            - Clean status codes and filter bots or irrelevant requests
 
-Example:
-df['timestamp'] = pd.to_datetime(df['timestamp'], format='%d/%b/%Y:%H:%M:%S %z')
-            </p>
+            Example:
+            <code>df['timestamp'] = pd.to_datetime(df['timestamp'], format='%d/%b/%Y:%H:%M:%S %z')</code></p>
         </div>
 
-        <div class="step">
+        <div class="step step-6">
             <h2>Step 6: Feature Engineering</h2>
-            <p>
-- Count requests per IP in time window
-- Calculate average response time
-- Use NLP on URLs and user-agents (TF-IDF, Word2Vec)
-- Detect repetitive patterns in request headers or payloads
-            </p>
+            <p>- Count requests per IP in time window
+            - Calculate average response time
+            - Use NLP on URLs and user-agents (TF-IDF, Word2Vec)
+            - Detect repetitive patterns in request headers or payloads</p>
         </div>
 
-        <div class="step">
+        <div class="step step-7">
             <h2>Step 7: Apply NLP Techniques</h2>
-            <p>
-- Tokenize URL paths and use n-grams
-- Vectorize with CountVectorizer or TfidfVectorizer
-- Perform clustering or frequency analysis on user-agents
-            </p>
+            <p>- Tokenize URL paths and use n-grams
+            - Vectorize with CountVectorizer or TfidfVectorizer
+            - Perform clustering or frequency analysis on user-agents</p>
         </div>
 
-        <div class="step">
+        <div class="step step-8">
             <h2>Step 8: Train Detection Models</h2>
-            <p>
-- Label data (manually or with threshold rules)
-- Train machine learning models like:
-  - Random Forest
-  - Logistic Regression
-  - Isolation Forest (unsupervised)
+            <p>- Label data (manually or with threshold rules)
+            - Train machine learning models like:
+                - Random Forest
+                - Logistic Regression
+                - Isolation Forest (unsupervised)
 
-Use scikit-learn to split data, train and evaluate:
-from sklearn.ensemble import RandomForestClassifier
-model = RandomForestClassifier()
-model.fit(X_train, y_train)
-            </p>
+            Use scikit-learn to split data, train and evaluate:
+            <code>from sklearn.ensemble import RandomForestClassifier
+            model = RandomForestClassifier()
+            model.fit(X_train, y_train)</code></p>
         </div>
 
-        <div class="step">
+        <div class="step step-9">
             <h2>Step 9: Visualize & Evaluate Results</h2>
-            <p>
-- Use confusion matrix, accuracy, precision-recall
-- Plot request patterns using matplotlib/seaborn
-- Visualize abnormal spikes by IP and endpoint
-            </p>
+            <p>- Use confusion matrix, accuracy, precision-recall
+            - Plot request patterns using matplotlib/seaborn
+            - Visualize abnormal spikes by IP and endpoint</p>
         </div>
 
-        <div class="step">
+        <div class="step step-10">
             <h2>Step 10: Deploy as a Web App</h2>
-            <p>
-Use Streamlit or Flask to create a simple interface where:
-- Logs can be uploaded
-- Anomalies are detected and visualized
-- Real-time alerts are shown for suspicious IPs
-            </p>
+            <p>Use Streamlit or Flask to create a simple interface where:
+            - Logs can be uploaded
+            - Anomalies are detected and visualized
+            - Real-time alerts are shown for suspicious IPs</p>
         </div>
 
         <div class="footer">
