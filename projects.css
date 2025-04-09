@@ -1,0 +1,121 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef2f7;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    animation: fadeIn 0.8s ease-in;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+/* Steps */
+.step {
+    background-color: #f8f9fa;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 5px solid #3a86ff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.step:hover {
+    background-color: #edf2ff;
+    transform: translateY(-2px);
+}
+
+.step h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #3a86ff;
+}
+
+.step p {
+    font-size: 1rem;
+    color: #555;
+    white-space: pre-line;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Code Styling */
+code {
+    display: block;
+    background-color: #f0f0f0;
+    color: #d63384;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .step h2 {
+        font-size: 1.2rem;
+    }
+
+    .step p {
+        font-size: 0.95rem;
+    }
+}
