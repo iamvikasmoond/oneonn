@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection of Application Layer (Layer 7) DDoS Attacks Using NLP on Web Logs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-items">
+                <li><a href="#step1"><span class="icon">1</span><span class="text">Understand the Problem Statement</span></a></li>
+                <li><a href="#step2"><span class="icon">2</span><span class="text">Set Up the Project Environment</span></a></li>
+                <li><a href="#step3"><span class="icon">3</span><span class="text">Collect or Simulate Web Logs</span></a></li>
+                <li><a href="#step4"><span class="icon">4</span><span class="text">Load and Parse the Logs</span></a></li>
+                <li><a href="#step5"><span class="icon">5</span><span class="text">Preprocess the Data</span></a></li>
+                <li><a href="#step6"><span class="icon">6</span><span class="text">Exploratory Data Analysis (EDA)</span></a></li>
+                <li><a href="#step7"><span class="icon">7</span><span class="text">NLP Feature Extraction from URLs</span></a></li>
+                <li><a href="#step8"><span class="icon">8</span><span class="text">Combine Features</span></a></li>
+                <li><a href="#step9"><span class="icon">9</span><span class="text">Apply Unsupervised Anomaly Detection</span></a></li>
+                <li><a href="#step10"><span class="icon">10</span><span class="text">Visualize Detected Attacks</span></a></li>
+                <li><a href="#step11"><span class="icon">11</span><span class="text">Build a Streamlit Dashboard</span></a></li>
+                <li><a href="#step12"><span class="icon">12</span><span class="text">Save and Export Results</span></a></li>
+                <li><a href="#step13"><span class="icon">13</span><span class="text">Document the Project</span></a></li>
+                <li><a href="#step14"><span class="icon">14</span><span class="text">Test on Real Logs</span></a></li>
+                <li><a href="#step15"><span class="icon">15</span><span class="text">Go Advanced</span></a></li>
+            </ul>
+            <div class="bottom-icons">
+                <a href="#contact"><span class="icon">C</span><span class="text">Contact</span></a>
+                <a href="#about"><span class="icon">A</span><span class="text">About</span></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 OneOnn
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content">
+            <section id="step1">
+                <h2>Step 1: Understand the Problem Statement</h2>
+                <p>Layer 7 DDoS attacks target the web application itself, sending massive amounts of legitimate-looking HTTP requests to exhaust server resources. By analyzing web server logs using Natural Language Processing (NLP) and Machine Learning (ML), we can identify these abnormal behaviors.</p>
+            </section>
+
+            <section id="step2">
+                <h2>Step 2: Set Up the Project Environment</h2>
+                <p>Ensure Python 3.9+ is installed. Use a code editor like VS Code or Jupyter Notebook. Install necessary libraries:</p>
+                <pre><code>pip install pandas numpy matplotlib seaborn scikit-learn nltk streamlit</code></pre>
+                <p>Recommended file structure:</p>
+                <pre><code>project-root/
+├── data/
+│   └── access.log
+├── notebooks/
+│   └── analysis.ipynb
+├── app/
+│   └── streamlit_app.py
+├── requirements.txt
+└── README.md</code></pre>
+            </section>
+
+            <section id="step3">
+                <h2>Step 3: Collect or Simulate Web Logs</h2>
+                <p>Access logs resemble Apache or NGINX logs. Each line might look like:</p>
+                <pre><code>192.168.1.10 - - [06/Apr/2025:12:01:22 +0000] "GET /login HTTP/1.1" 200 214</code></pre>
+                <p>If real logs aren't available, use tools like <a href="https://github.com/kiritbasu/Fake-Apache-Log-Generator">Fake Apache Log Generator</a> or collect logs from your own server.</p>
+            </section>
+
+            <section id="step4">
+                <h2>Step 4: Load and Parse the Logs</h2>
+                <p>Use regular expressions to convert log lines into structured data:</p>
+                <pre><code>import re
+import pandas as pd
+
+pattern = r'(?P&lt;ip&gt;\d+\.\d+\.\d+\.\d+) - - \[(?P&lt;timestamp&gt;.*?)\] "(?P&lt;method&gt;\w+) (?P&lt;url&gt;\S+) HTTP/\d.\d" (?P&lt;status&gt;\d{3}) (?P&lt;size&gt;\d+)'
+lines = open("data/access.log").readlines()
+matches = [re.match(pattern, line) for line in lines if re.match(pattern, line)]
+df = pd.DataFrame([match.groupdict() for match in matches])</code></pre>
+                <p>This results in a structured dataset with columns like <code>ip</code>, <code>timestamp</code>, <code>method</code>, <code>url</code>, <code>status</code>, and <code>size</code>.</p>
+            </section>
+
+                        <section id="step5">
+                <h2>Step 5: Preprocess the Data</h2>
+                <p>Convert timestamps to datetime, remove irrelevant columns, and clean malformed entries. This prepares the data for analysis and feature extraction.</p>
+                <pre><code>
+df['timestamp'] = pd.to_datetime(df['timestamp'], format='%d/%b/%Y:%H:%M:%S %z')
+df = df.dropna()  # Remove missing or invalid rows
+                </code></pre>
+            </section>
+
+            <section id="step6">
+                <h2>Step 6: Exploratory Data Analysis (EDA)</h2>
+                <p>Understand the distribution of requests by IP, time, method, and URL.</p>
+                <pre><code>
+df['ip'].value_counts().head(10).plot(kind='bar', title='Top IPs')
+plt.show()
+                </code></pre>
+                <p>This helps identify suspicious behavior like excessive requests from a single IP.</p>
+            </section>
+
+            <section id="step7">
+                <h2>Step 7: NLP Feature Extraction from URLs</h2>
+                <p>Tokenize and vectorize URLs using NLP techniques like TF-IDF or CountVectorizer:</p>
+                <pre><code>
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer()
+X_url = vectorizer.fit_transform(df['url'])
+                </code></pre>
+                <p>This converts URL paths into numerical vectors for analysis.</p>
+            </section>
+
+            <section id="step8">
+                <h2>Step 8: Combine Features</h2>
+                <p>Concatenate multiple features such as TF-IDF vectors, request sizes, request methods (encoded), and timestamps (converted to seconds or minutes).</p>
+                <pre><code>
+from sklearn.preprocessing import OneHotEncoder
+method_encoded = OneHotEncoder().fit_transform(df[['method']])
+features = hstack([X_url, method_encoded, df[['size']]])
+                </code></pre>
+            </section>
+
+            <section id="step9">
+                <h2>Step 9: Apply Unsupervised Anomaly Detection</h2>
+                <p>Use Isolation Forest or DBSCAN to detect outliers without labeled data:</p>
+                <pre><code>
+from sklearn.ensemble import IsolationForest
+model = IsolationForest(contamination=0.02)
+df['anomaly'] = model.fit_predict(features)
+                </code></pre>
+                <p>Results in -1 for anomalous traffic and 1 for normal requests.</p>
+            </section>
+
+            <section id="step10">
+                <h2>Step 10: Visualize Detected Attacks</h2>
+                <p>Plot the frequency of requests and highlight anomalies:</p>
+                <pre><code>
+import matplotlib.pyplot as plt
+df['timestamp'] = pd.to_datetime(df['timestamp'])
+df.set_index('timestamp', inplace=True)
+df['count'] = 1
+df['count'].resample('1Min').sum().plot()
+plt.title('Requests Per Minute')
+plt.show()
+                </code></pre>
+            </section>
+
+            <section id="step11">
+                <h2>Step 11: Build a Streamlit Dashboard</h2>
+                <p>Create a simple dashboard to input log files and view anomaly detection results:</p>
+                <pre><code>
+import streamlit as st
+st.title("Layer 7 DDoS Detection")
+uploaded_file = st.file_uploader("Upload Log File", type="log")
+if uploaded_file:
+    st.dataframe(df[df['anomaly'] == -1])
+                </code></pre>
+                <p>This allows real-time detection and monitoring.</p>
+            </section>
+
+            <section id="step12">
+                <h2>Step 12: Save and Export Results</h2>
+                <p>Save detected anomalies to a new CSV file for reporting:</p>
+                <pre><code>
+df[df['anomaly'] == -1].to_csv("detected_attacks.csv", index=False)
+                </code></pre>
+            </section>
+
+            <section id="step13">
+                <h2>Step 13: Document the Project</h2>
+                <p>Write a detailed README.md explaining:</p>
+                <ul>
+                    <li>Project Goal</li>
+                    <li>Technology Stack</li>
+                    <li>Steps to Run</li>
+                    <li>Limitations</li>
+                </ul>
+            </section>
+
+            <section id="step14">
+                <h2>Step 14: Test on Real Logs</h2>
+                <p>Deploy the model on real-world or simulated production logs to evaluate performance. Validate with both false positives and false negatives.</p>
+            </section>
+
+            <section id="step15">
+                <h2>Step 15: Go Advanced</h2>
+                <p>Experiment with:</p>
+                <ul>
+                    <li>Deep Learning models like LSTM for sequential detection</li>
+                    <li>Clustering-based approaches like HDBSCAN</li>
+                    <li>Real-time streaming log ingestion via Kafka or Flink</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
