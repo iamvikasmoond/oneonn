@@ -265,3 +265,12 @@ footer {
   color: #ffffff;
 }
 
+.logos img {
+  height: 40px;
+  background-color: #ffffff; /* white background */
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+  transition: opacity 0.3s ease;
+  object-fit: contain;
+}
