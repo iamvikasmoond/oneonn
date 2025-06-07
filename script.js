@@ -23,3 +23,8 @@ document.getElementById("logo").addEventListener("click", () => {
   document.body.classList.add("glitch");
   setTimeout(() => document.body.classList.remove("glitch"), 1000);
 });
+
+document.querySelector('.oneonn-logo').addEventListener('click', () => {
+  document.body.classList.add('glitch-effect');
+  setTimeout(() => document.body.classList.remove('glitch-effect'), 1000);
+});
