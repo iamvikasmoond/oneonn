@@ -289,3 +289,9 @@ footer {
   transform: scale(1.05);
   opacity: 1;
 }
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
