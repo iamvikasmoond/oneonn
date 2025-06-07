@@ -211,7 +211,7 @@ p {
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  margin-top: 2rem;
+  border-radius: 25px;
 }
 
 .logos img {
