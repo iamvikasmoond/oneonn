@@ -51,6 +51,7 @@ a {
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease;
   cursor: pointer;
+  border-radius: 25px;
 }
 
 #hero #logo:hover {
