@@ -273,3 +273,18 @@ footer {
   transition: opacity 0.3s ease;
   object-fit: contain;
 }
+
+.logos img {
+  height: 40px;
+  background-color: #ffffff; /* White background for contrast */
+  padding: 0.5rem 1rem;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  object-fit: contain;
+}
+
+.logos img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
