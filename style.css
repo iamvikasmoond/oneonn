@@ -1,133 +1,275 @@
-/* General Reset */
+/* Global Reset & Base Styling */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Body Background */
+:root {
+  --primary: #D7B97A;
+  --accent: #0e6b0e;
+  --bg-dark: #0b0b0b;
+  --bg-card: #161616;
+  --text-light: #ffffff;
+  --text-muted: #aaaaaa;
+  --border: #1e1e1e;
+}
+
 body {
-    background-color: #f9f9f9;
-    color: #333;
+  background-color: var(--bg-dark);
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--text-light);
+  line-height: 1.8;
+  scroll-behavior: smooth;
 }
 
-/* Main Container */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Utility Classes */
 .container {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1.5rem;
 }
 
-/* Logo */
-.logo {
-    max-width: 150px;
-    display: block;
-    margin: 0 auto 20px;
+/* HERO SECTION */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
 }
 
-/* Header Section */
-.header {
-    text-align: center;
+#hero #logo {
+  width: 140px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.header h1 {
-    font-size: 32px;
-    color: #3F3AB0;
-    margin-bottom: 10px;
+#hero #logo:hover {
+  transform: scale(1.05);
 }
 
-.header p {
-    font-size: 16px;
-    color: #555;
+#typewriter {
+  font-size: 1.5rem;
+  color: var(--primary);
+  min-height: 2rem;
+  margin-top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--primary);
 }
 
-/* Client Info Section */
-.client-info {
-    background-color: #f4f4f4;
-    padding: 25px;
-    border-left: 4px solid #3F3AB0;
-    margin-top: 40px;
-    border-radius: 8px;
-    animation: fadeIn 1.5s ease-in-out;
+.cta {
+  margin-top: 2.5rem;
 }
 
-.client-info h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: #3F3AB0;
+.cta button {
+  background-color: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 6px;
 }
 
-.client-info a {
-    color: #3F3AB0;
-    text-decoration: none;
-    font-weight: bold;
+.cta button:hover {
+  background-color: var(--primary);
+  color: #000;
 }
 
-.client-info a:hover {
-    text-decoration: underline;
+/* SECTION */
+section {
+  padding: 5rem 1.5rem;
+  border-top: 1px solid var(--border);
 }
 
-/* Services Section */
-.services {
-    margin-top: 50px;
+h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
 }
 
-.services h2 {
-    text-align: center;
-    font-size: 26px;
-    color: #3F3AB0;
-    margin-bottom: 30px;
+p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 1000px;
+  margin-bottom: 2rem;
 }
 
-.service-item {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    transition: all 0.3s;
-    border-left: 4px solid #3F3AB0;
+/* TECH MODULES */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.service-item h3 {
-    font-size: 18px;
-    color: #3F3AB0;
-    margin-bottom: 5px;
+.module {
+  background: var(--bg-card);
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.3s ease;
 }
 
-.service-item p {
-    font-size: 14px;
-    color: #555;
+.module:hover {
+  transform: translateY(-6px);
 }
 
-/* Hover Effect */
-.service-item:hover {
-    background-color: #e8e6ff;
-    transform: translateY(-5px);
-    cursor: pointer;
+.module i {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
 }
 
-/* Footer Section */
-.footer {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 14px;
-    color: #999;
-    border-top: 1px solid #e0e0e0;
+/* FLIP CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.card {
+  perspective: 1000px;
+  position: relative;
+  height: 250px;
+}
+
+.card .front,
+.card .back {
+  background-color: var(--bg-card);
+  color: var(--text-light);
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s ease-in-out;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(360deg);
+}
+
+.card .front i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* TECH STACK */
+#tech-stack ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+#tech-stack li {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+}
+
+#tech-stack i {
+  color: var(--primary);
+}
+
+/* TRUSTED PARTNERS */
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.logos img {
+  height: 40px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.logos img:hover {
+  opacity: 1;
+}
+
+/* FOOTER */
+footer {
+  background-color: #101010;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  #typewriter {
+    font-size: 1.1rem;
+  }
+
+  .cta button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  section {
+    padding: 3rem 1rem;
+  }
+}
+
+.module i,
+.card .front i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #D7B97A; /* golden tone */
+}
+
+.module:hover i,
+.card:hover .front i {
+  color: #ffffff;
+}
+
+.logos img {
+  height: 40px;
+  background-color: #ffffff; /* white background */
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+  transition: opacity 0.3s ease;
+  object-fit: contain;
 }
