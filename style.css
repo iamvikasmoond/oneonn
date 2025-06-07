@@ -276,9 +276,10 @@ footer {
 
 .logos img {
   height: 40px;
-  background-color: #ffffff; /* White background for contrast */
+  background-color: #ffffff;
   padding: 0.5rem 1rem;
-  border-radius: 12px; /* Rounded corners */
+  border: 2px solid #D7B97A; /* Same as button border */
+  border-radius: 12px;        /* Same curve as button */
   box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease, opacity 0.3s ease;
   object-fit: contain;
