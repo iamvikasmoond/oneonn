@@ -295,3 +295,36 @@ footer {
   justify-content: center;
   margin: 2rem 0;
 }
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  background-color: #000000;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oneonn-logo {
+  width: 160px; /* Optimal for desktop */
+  height: 160px;
+  border-radius: 50%; /* Perfect circle */
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(215, 185, 122, 0.15);
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.oneonn-logo:hover {
+  transform: scale(1.05);
+}
+
