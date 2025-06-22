@@ -28,3 +28,17 @@ document.querySelector('.oneonn-logo').addEventListener('click', () => {
   document.body.classList.add('glitch-effect');
   setTimeout(() => document.body.classList.remove('glitch-effect'), 1000);
 });
+
+const typewriter = document.getElementById('typewriter');
+if (typewriter) {
+  const text = "> Rewriting… intelligence_";
+  let index = 0;
+  function type() {
+    if (index < text.length) {
+      typewriter.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(type, 70);
+    }
+  }
+  window.onload = type;
+}
