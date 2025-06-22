@@ -274,3 +274,52 @@ footer {
   transition: opacity 0.3s ease;
   object-fit: contain;
 }
+
+/* FORM STYLING */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text-light);
+}
+
+form label {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+form input,
+form textarea {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background-color: #0e0e0e;
+  color: var(--text-light);
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+form button {
+  align-self: flex-start;
+  background-color: var(--primary);
+  color: #000;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #bda362;
+}
