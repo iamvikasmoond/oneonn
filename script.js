@@ -1,4 +1,3 @@
-// Typewriter effect
 document.addEventListener("DOMContentLoaded", () => {
   const typewriter = document.getElementById('typewriter');
   if (typewriter) {
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     type();
   }
 
-  // Glitch on logo click
   const logo = document.getElementById("logo");
   if (logo) {
     logo.addEventListener("click", () => {
@@ -25,16 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Glitch on logo with class `.oneonn-logo`
-  const logoAlt = document.querySelector('.oneonn-logo');
-  if (logoAlt) {
-    logoAlt.addEventListener('click', () => {
-      document.body.classList.add('glitch-effect');
-      setTimeout(() => document.body.classList.remove('glitch-effect'), 1000);
-    });
-  }
-
-  // Intersection observer animation
   const sections = document.querySelectorAll("section");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
