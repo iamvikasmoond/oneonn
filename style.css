@@ -396,3 +396,13 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
   background-color: #c4a661;
 }
+
+#typewriter {
+  font-size: 1.5rem;
+  color: var(--primary);
+  min-height: 2rem;
+  margin-top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--primary);
+}
