@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>oneonn — intelligence • rewritten</title>
+<title>oneonn Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -133,6 +133,14 @@
   .hero h1{
     font-size:56px;line-height:1.03;font-weight:800;
   }
+  .brand-mark{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+  border-radius:6px;      /* rounded, matches the old mark's radius */
+  object-fit:cover;
+  display:block;
+}
   .hero-sub{
     font-size:16px;font-weight:600;color:var(--graphite);margin-top:22px;
   }
@@ -298,15 +306,12 @@
     <!-- NAV -->
     <nav>
       <div class="brand">
-        <svg class="brand-mark" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="2" width="20" height="20" rx="6" transform="rotate(15 12 12)" stroke="#0D0D0D" stroke-width="1.4"/>
-          <circle cx="12" cy="12" r="2.6" fill="#0D0D0D"/>
-        </svg>
-        <div class="brand-text">
-          <span class="brand-name">oneonn</span>
-          <span class="brand-tag">intelligence • rewritten</span>
-        </div>
-      </div>
+  <img class="brand-mark" src="https://raw.githubusercontent.com/iamvikasmoond/oneonn/refs/heads/main/Files/Github/OneOne%20Logo%20File/oneonn%20(512%20x%20512%20px).png" alt="oneonn logo">
+  <div class="brand-text">
+    <span class="brand-name">oneonn</span>
+    <span class="brand-tag">intelligence • rewritten</span>
+  </div>
+</div>
       <ul class="nav-links">
         <li><a href="#services">Solutions</a></li>
         <li><a href="#process">Process</a></li>
