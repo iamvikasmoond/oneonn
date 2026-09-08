@@ -1,186 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OneONN",
-    "url": "https://oneonn.com",
-    "logo": "https://oneonn.com/logo.png",
-    "sameAs": [
-      "https://www.linkedin.com/company/oneonn",
-      "https://x.com/oneonn"
-    ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>oneonn — intelligence • rewritten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --off-white:#F5F5F0;
+    --black:#0D0D0D;
+    --graphite:#2B2B2B;
+    --gold:#D4AF37;
+    --champagne:#E6D5B8;
+    --lime:#C9F24D;
+    --canvas:#9A9A96;
+    --line:rgba(13,13,13,0.12);
+    --line-soft:rgba(13,13,13,0.08);
+    --line-on-black:rgba(245,245,240,0.16);
+    --radius-lg:24px;
+    --radius-md:16px;
+    --radius-sm:10px;
+    --ease:cubic-bezier(.16,.8,.24,1);
   }
-  </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "OneONN",
-    "url": "https://oneonn.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://oneonn.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--canvas);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--black);
+    -webkit-font-smoothing:antialiased;
   }
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  h1,h2,h3,.display{
+    font-family:'Inter Tight','Inter',sans-serif;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ::selection{background:var(--gold);color:var(--black);}
 
-  <!-- Title & Description -->
-  <title>OneONN | intelligence • rewritten</title>
-  <meta name="description" content="OneONN is an AI-first company focused on neural networks, cybersecurity, and intelligent systems. Intelligence • rewritten." />
-  <meta name="keywords" content="AI, Artificial Intelligence, OneONN, Neural Networks, Cybersecurity, Machine Learning, Deep Learning, Automation, LLMs, AI Research, AI Blog" />
-  <meta name="author" content="OneONN Technologies" />
-  <meta name="robots" content="index, follow" />
-  <meta http-equiv="Cache-Control" content="no-store" />
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="OneONN | Intelligence • Rewritten" />
-  <meta property="og:description" content="Explore AI, ML, and cybersecurity solutions from OneONN — intelligence, rewritten." />
-  <meta property="og:image" content="https://yourdomain.com/assets/og-preview.jpg" />
-  <meta property="og:url" content="https://oneonn.com" />
-  <meta property="og:type" content="website" />
+  /* ---------- outer canvas ---------- */
+  .canvas-wrap{
+    min-height:100vh;
+    padding:40px 24px 0;
+    display:flex;
+    justify-content:center;
+  }
+  .site{
+    width:100%;
+    max-width:1360px;
+    background:var(--off-white);
+    border-radius:32px;
+    overflow:hidden;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,0.45);
+    position:relative;
+  }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="OneONN | Intelligence • Rewritten" />
-  <meta name="twitter:description" content="AI-first platform offering neural solutions for real-world challenges." />
-  <meta name="twitter:image" content="https://yourdomain.com/assets/twitter-preview.jpg" />
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding-left:56px;
+    padding-right:56px;
+  }
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://raw.githubusercontent.com/iamvikasmoond/oneonn/main/Files/Github/OneOne%20Logo%20File/favicon.ico" type="image/x-icon" />
+  /* ---------- nav ---------- */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:26px;
+    padding-bottom:26px;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-mark{width:22px;height:22px;flex-shrink:0;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.05;}
+  .brand-name{font-weight:800;font-size:15px;letter-spacing:-0.01em;}
+  .brand-tag{font-size:9.5px;color:var(--graphite);letter-spacing:0.04em;margin-top:1px;opacity:0.65;}
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  .nav-links{display:flex;gap:30px;list-style:none;padding:0;margin:0;}
+  .nav-links a{
+    font-size:12.5px;font-weight:500;color:var(--graphite);
+    position:relative;padding-bottom:3px;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--black);transition:width .35s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:12.5px;font-weight:600;
+    padding:10px 16px;border-radius:100px;
+    white-space:nowrap;
+    transition:transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .btn-outline{border:1px solid var(--black);color:var(--black);background:transparent;}
+  .btn-outline:hover{background:var(--black);color:var(--off-white);}
+  .btn-solid{background:var(--black);color:var(--off-white);border:1px solid var(--black);}
+  .btn-solid:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--black);background:transparent;}
+  .btn-ghost:hover{border-color:var(--black);}
+  .btn svg{width:11px;height:11px;transition:transform .3s var(--ease);}
+  .btn:hover svg{transform:translate(2px,-2px);}
+
+  .nav-cta{display:none;}
+
+  /* ---------- section spacing ---------- */
+  section{padding-top:96px;padding-bottom:96px;}
+  .eyebrow-row{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;margin-bottom:56px;flex-wrap:wrap;}
+  .section-heading{font-size:34px;font-weight:700;max-width:520px;}
+  .section-sub{font-size:14px;line-height:1.65;color:var(--graphite);max-width:360px;padding-top:6px;}
+  .mark{
+    background:linear-gradient(180deg, transparent 62%, var(--lime) 62%);
+    padding:0 2px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-top:64px;padding-bottom:56px;
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;
+  }
+  .hero h1{
+    font-size:56px;line-height:1.03;font-weight:800;
+  }
+  .hero-sub{
+    font-size:16px;font-weight:600;color:var(--graphite);margin-top:22px;
+  }
+  .hero p.desc{
+    font-size:14.5px;line-height:1.7;color:var(--graphite);max-width:400px;margin-top:18px;
+  }
+  .hero-ctas{display:flex;gap:12px;margin-top:34px;}
+  .hero-art{position:relative;aspect-ratio:1/0.92;}
+  .hero-art svg{width:100%;height:100%;}
+
+  /* ---------- tech strip ---------- */
+  .tech-strip{
+    padding-top:26px;padding-bottom:26px;
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .tech-row{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 26px;
+  }
+  .tech-row span{
+    font-size:11px;font-weight:600;letter-spacing:0.08em;color:var(--graphite);opacity:0.55;
+  }
+
+  /* ---------- services ---------- */
+  .services-desc{font-size:14.5px;line-height:1.7;color:var(--graphite);max-width:380px;padding-top:6px;}
+  .card-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  }
+  .card{
+    border-radius:22px;padding:32px;min-height:280px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+    position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-5px);}
+  .card.light{background:var(--off-white);border:1px solid var(--line);color:var(--black);}
+  .card.dark{background:var(--black);color:var(--off-white);}
+  .card-num{font-size:11px;font-weight:600;letter-spacing:0.06em;opacity:0.5;}
+  .card-title{font-size:20px;font-weight:700;margin-top:10px;letter-spacing:-0.01em;}
+  .card-list{list-style:none;padding:0;margin:16px 0 0;font-size:13px;line-height:2;opacity:0.75;}
+  .card-art{width:64px;height:64px;margin:18px 0;}
+  .card-link{
+    display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;
+    margin-top:auto;padding-top:18px;
+  }
+  .card-link svg{width:10px;height:10px;transition:transform .3s var(--ease);}
+  .card-link:hover svg{transform:translate(2px,-2px);}
+
+  /* ---------- process ---------- */
+  .process-line{
+    position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:8px;
+  }
+  .process-line::before{
+    content:"";position:absolute;top:9px;left:4%;right:4%;height:1px;background:var(--line);
+  }
+  .process-step{position:relative;padding-top:32px;}
+  .process-node{
+    position:absolute;top:0;left:0;width:19px;height:19px;border-radius:50%;
+    background:var(--off-white);border:1px solid var(--black);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .process-node::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--black);}
+  .process-step.active .process-node{background:var(--black);}
+  .process-step.active .process-node::after{background:var(--gold);}
+  .process-step-num{font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--graphite);opacity:0.6;}
+  .process-step-title{font-size:16px;font-weight:700;margin-top:8px;}
+  .process-step-desc{font-size:13px;line-height:1.65;color:var(--graphite);margin-top:8px;max-width:230px;}
+
+  /* ---------- why ---------- */
+  .why-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px 40px;
+  }
+  .why-item{border-top:1px solid var(--line);padding-top:20px;}
+  .why-num{font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--gold);}
+  .why-title{font-size:16px;font-weight:700;margin-top:10px;letter-spacing:-0.005em;}
+  .why-quote{font-size:14.5px;line-height:1.7;color:var(--graphite);margin-top:10px;max-width:360px;}
+
+  /* ---------- playful banner ---------- */
+  .playful{
+    background:#E9E9E4;border-radius:26px;
+    padding:56px 56px;
+    display:grid;grid-template-columns:1fr 0.55fr;align-items:center;gap:32px;
+  }
+  .playful h3{font-size:26px;font-weight:700;max-width:340px;line-height:1.15;}
+  .playful p{font-size:14px;color:var(--graphite);margin-top:14px;max-width:320px;line-height:1.6;}
+  .playful .btn{margin-top:22px;}
+  .mascot-art{width:100%;}
+
+  /* ---------- final cta ---------- */
+  .final-cta{
+    background:#E9E9E4;border-radius:26px;
+    padding:64px 56px;
+    display:grid;grid-template-columns:1fr 0.5fr;align-items:center;gap:32px;
+  }
+  .final-cta h2{font-size:38px;font-weight:800;line-height:1.08;}
+  .final-cta p{font-size:14.5px;color:var(--graphite);margin-top:16px;max-width:360px;line-height:1.7;}
+  .final-cta .btn{margin-top:26px;}
+
+  /* ---------- footer ---------- */
+  footer{padding-top:64px;padding-bottom:40px;}
+  .footer-top{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;
+    padding-bottom:44px;border-bottom:1px solid var(--line-soft);
+  }
+  .footer-brand .brand-name{font-size:18px;}
+  .footer-brand .brand-tag{font-size:11px;margin-top:6px;opacity:0.55;}
+  .footer-col-title{font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--graphite);opacity:0.55;margin-bottom:14px;}
+  .footer-col a, .footer-col span{
+    display:block;font-size:13px;color:var(--graphite);margin-bottom:10px;
+  }
+  .footer-col a:hover{color:var(--black);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;padding-top:24px;
+    font-size:11.5px;color:var(--graphite);opacity:0.6;
+  }
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- orbit animation ---------- */
+  .orbit{animation:spin 26s linear infinite;transform-origin:center;}
+  .orbit-slow{animation:spin 40s linear infinite reverse;transform-origin:center;}
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  .pulse{animation:pulse 3.6s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.45;}}
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .site{border-radius:0;}
+    .canvas-wrap{padding:0;background:var(--off-white);}
+    .wrap{padding-left:24px;padding-right:24px;}
+    .nav-links{display:none;}
+    .hero{grid-template-columns:1fr;}
+    .hero-art{order:-1;aspect-ratio:1/0.7;}
+    .hero h1{font-size:38px;}
+    .card-grid{grid-template-columns:1fr;}
+    .process-line{grid-template-columns:1fr;}
+    .process-line::before{width:1px;height:100%;top:4%;bottom:4%;left:9px;right:auto;}
+    .process-step{padding-left:32px;padding-top:0;margin-bottom:28px;}
+    .process-node{top:2px;}
+    .why-grid{grid-template-columns:1fr;gap:28px;}
+    .playful,.final-cta{grid-template-columns:1fr;padding:36px 28px;}
+    .mascot-art{max-width:220px;}
+    .footer-top{grid-template-columns:1fr 1fr;row-gap:32px;}
+    section{padding-top:64px;padding-bottom:64px;}
+  }
+  @media (max-width:520px){
+    .footer-top{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;gap:10px;align-items:flex-start;}
+    .tech-row{justify-content:flex-start;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="main-header">
-    <div class="logo-container">
-      <img src="https://raw.githubusercontent.com/iamvikasmoond/oneonn/refs/heads/main/Files/Github/OneOne%20Logo%20File/3A3F825D-7847-43BD-8F8F-AE699BB95AC7.png" alt="OneONN" class="logo-img" />
-    </div>
+<div class="canvas-wrap">
+<div class="site">
+  <div class="wrap">
 
-    <nav class="nav-center">
-      <a href="#">Home</a>
-      <a href="#">Products</a>
-      <a href="#">About Us</a>
-      <div class="dropdown">
-        <button class="dot-dropdown">⋯</button>
-        <div class="dropdown-content">
-          <a href="#">Contact Us</a>
-          <a href="#">Pricing</a>
-          <a href="#">Investors</a>
-          <a href="#">Career</a>
+    <!-- NAV -->
+    <nav>
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="2" width="20" height="20" rx="6" transform="rotate(15 12 12)" stroke="#0D0D0D" stroke-width="1.4"/>
+          <circle cx="12" cy="12" r="2.6" fill="#0D0D0D"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">oneonn</span>
+          <span class="brand-tag">intelligence • rewritten</span>
         </div>
       </div>
+      <ul class="nav-links">
+        <li><a href="#services">Solutions</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#why">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-outline">Start a project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+      </a>
     </nav>
 
-    <div class="right-header desktop-right">
-      <span class="material-icons" onclick="openSearch()">search</span>
-      <a href="#" class="signin-link">Sign in</a>
-      <a href="#" class="subscribe-btn">Subscribe</a>
-    </div>
-
-    <div class="right-header mobile-right">
-      <span class="material-icons" onclick="openSearch()">search</span>
-      <button class="menu-btn">
-        <span class="material-icons">menu</span>
-        <span>Menu</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Search Overlay -->
-  <div class="search-overlay" id="searchOverlay">
-    <div class="search-box">
-      <div class="search-header">
-        <span class="material-icons" onclick="closeSearch()">close</span>
-        <input type="text" id="searchInput" placeholder="I’m searching for...">
-        <button onclick="closeSearch()">Cancel</button>
-      </div>
-      <div class="search-results" id="searchResults">
-        <!-- Search results will populate dynamically -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Maintenance Section -->
-  <main class="maintenance-container">
-    <div class="maintenance-box">
-      <h1>We're Updating Things...</h1>
-      <p>Our team is currently improving the OneONN experience. During this time, some features or pages may be unavailable.</p>
-
-      <div class="info">
-        <h2>Are you an existing user?</h2>
-        <p>Please check your email you’ve received a secure link and credentials to access your platform.</p>
-      </div>
-
-      <div class="info">
-        <h2>New here?</h2>
-        <p>We're glad you're interested! You can reach out to us at <a href="mailto:mail@oneonn.com">mail@oneonn.com</a> and we’ll get back to you shortly.</p>
-      </div>
-
-      <p style="margin-top: 2rem; font-size: 0.95rem;">Thank you for your patience OneONN will be back smarter and faster!</p>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-left">
-        <h2>Sign up to receive updates<br>and the latest news from OneONN.</h2>
-        <button class="subscribe-btn">Subscribe</button>
-      </div>
-
-      <div class="footer-right">
-        <div class="footer-links">
-          <ul>
-            <li><a href="/products.html">Products</a></li>
-            <li><a href="/about.html">About Us</a></li>
-            <li><a href="/careers.html">Careers</a></li>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms of Use</a></li>
-          </ul>
-          <ul>
-            <li><a href="https://x.com/oneonn" target="_blank">X</a></li>
-            <li><a href="https://facebook.com/oneonn" target="_blank">Facebook</a></li>
-            <li><a href="https://linkedin.com/company/oneonn" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/oneonn" target="_blank">GitHub</a></li>
-            <li><a href="https://blog.oneonn.com" target="_blank">Blog</a></li>
-          </ul>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>We build what comes next.</h1>
+        <p class="hero-sub">AI systems. Digital products. Software that ships.</p>
+        <p class="desc">oneonn builds AI systems, web platforms, mobile applications and custom software for companies turning ambitious ideas into real products.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-solid">Start a project
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+          <a href="#services" class="btn btn-ghost">Explore solutions</a>
         </div>
       </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 480 460" fill="none">
+          <g class="orbit-slow">
+            <ellipse cx="240" cy="230" rx="200" ry="80" stroke="#0D0D0D" stroke-opacity="0.18" stroke-width="1"/>
+          </g>
+          <g class="orbit">
+            <ellipse cx="240" cy="230" rx="150" ry="150" stroke="#0D0D0D" stroke-opacity="0.14" stroke-width="1"/>
+          </g>
+          <ellipse cx="240" cy="230" rx="120" ry="46" stroke="#D4AF37" stroke-opacity="0.5" stroke-width="1"/>
+
+          <!-- core -->
+          <circle cx="240" cy="230" r="72" fill="#0D0D0D"/>
+          <circle cx="240" cy="230" r="72" fill="url(#coreGrad)" fill-opacity="0.5"/>
+          <circle cx="214" cy="204" r="18" fill="#2B2B2B" fill-opacity="0.6"/>
+          <path d="M195 245 L285 215" stroke="#E6D5B8" stroke-width="1" stroke-opacity="0.5"/>
+          <path d="M200 260 L270 260" stroke="#C9F24D" stroke-width="1" stroke-opacity="0.6"/>
+
+          <!-- nodes on orbit -->
+          <g class="orbit">
+            <circle cx="90" cy="230" r="5" fill="#0D0D0D"/>
+            <circle cx="390" cy="230" r="4" fill="#D4AF37"/>
+            <circle cx="240" cy="80" r="4.5" fill="#0D0D0D"/>
+            <circle cx="240" cy="380" r="4" fill="#C9F24D"/>
+          </g>
+          <g class="orbit-slow">
+            <circle cx="120" cy="150" r="3.5" fill="#2B2B2B"/>
+            <circle cx="360" cy="310" r="3.5" fill="#2B2B2B"/>
+          </g>
+
+          <!-- floating tech glyphs -->
+          <text x="60" y="120" font-family="Inter" font-size="12" fill="#0D0D0D" opacity="0.55">&lt;/&gt;</text>
+          <text x="380" y="150" font-family="Inter" font-size="12" fill="#0D0D0D" opacity="0.55">API</text>
+          <text x="100" y="360" font-family="Inter" font-size="12" fill="#0D0D0D" opacity="0.5">01</text>
+          <circle cx="330" cy="380" r="14" stroke="#0D0D0D" stroke-opacity="0.3" stroke-width="1"/>
+          <circle cx="330" cy="380" r="4" fill="#D4AF37"/>
+
+          <path d="M60 60 L70 60 M65 55 L65 65" stroke="#0D0D0D" stroke-opacity="0.35" stroke-width="1.2"/>
+          <path d="M410 350 L420 350 M415 345 L415 355" stroke="#0D0D0D" stroke-opacity="0.35" stroke-width="1.2"/>
+
+          <defs>
+            <radialGradient id="coreGrad" cx="0.35" cy="0.3" r="0.8">
+              <stop offset="0%" stop-color="#3a3a3a"/>
+              <stop offset="100%" stop-color="#0D0D0D"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+    </section>
+
+    <!-- TECH STRIP -->
+    <div class="tech-strip reveal">
+      <div class="tech-row">
+        <span>PYTHON</span><span>FASTAPI</span><span>DJANGO</span><span>REACT</span>
+        <span>NEXT.JS</span><span>FLUTTER</span><span>KOTLIN</span><span>POSTGRESQL</span>
+        <span>DOCKER</span><span>AWS</span>
+      </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>© 2025 OneONN <b>intelligence • rewritten</b> </p>
-    </div>
-  </footer>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="eyebrow-row reveal">
+        <h2 class="section-heading">What we <span class="mark">build</span></h2>
+        <p class="services-desc">From intelligent systems to customer-facing applications, we design and engineer software around the problem that actually needs solving.</p>
+      </div>
 
-  <!-- Script -->
-  <script>
-    function openSearch() {
-      document.getElementById('searchOverlay').style.display = 'flex';
-    }
+      <div class="card-grid">
 
-    function closeSearch() {
-      document.getElementById('searchOverlay').style.display = 'none';
-    }
+        <div class="card light reveal">
+          <div>
+            <div class="card-num">01</div>
+            <div class="card-title">AI &amp; Machine Learning</div>
+          </div>
+          <svg class="card-art" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="20" stroke="#0D0D0D" stroke-width="1"/>
+            <circle cx="32" cy="14" r="3" fill="#0D0D0D"/>
+            <circle cx="14" cy="42" r="3" fill="#D4AF37"/>
+            <circle cx="50" cy="42" r="3" fill="#0D0D0D"/>
+            <path d="M32 14 L14 42 M32 14 L50 42 M14 42 L50 42" stroke="#0D0D0D" stroke-width="0.8"/>
+          </svg>
+          <ul class="card-list">
+            <li>AI agents</li><li>Machine learning systems</li><li>Computer vision</li><li>Intelligent automation</li>
+          </ul>
+          <a href="#contact" class="card-link">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
 
-    function filterSearchResults(query) {
-      const results = document.getElementById('searchResults');
-      results.innerHTML = `<div>Searching for: <strong>${query}</strong></div>`;
-    }
-  </script>
+        <div class="card dark reveal">
+          <div>
+            <div class="card-num">02</div>
+            <div class="card-title">Web Development</div>
+          </div>
+          <svg class="card-art" viewBox="0 0 64 64" fill="none">
+            <rect x="10" y="14" width="44" height="30" rx="4" stroke="#F5F5F0" stroke-width="1"/>
+            <line x1="10" y1="22" x2="54" y2="22" stroke="#F5F5F0" stroke-width="1"/>
+            <circle cx="15" cy="18" r="1.4" fill="#C9F24D"/>
+            <circle cx="19" cy="18" r="1.4" fill="#D4AF37"/>
+            <path d="M18 32 L26 38 L18 44" stroke="#F5F5F0" stroke-width="1"/>
+            <line x1="32" y1="44" x2="44" y2="44" stroke="#F5F5F0" stroke-width="1"/>
+          </svg>
+          <ul class="card-list">
+            <li>Websites</li><li>SaaS platforms</li><li>Web applications</li><li>APIs and backend systems</li>
+          </ul>
+          <a href="#contact" class="card-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
+
+        <div class="card dark reveal">
+          <div>
+            <div class="card-num">03</div>
+            <div class="card-title">Mobile Development</div>
+          </div>
+          <svg class="card-art" viewBox="0 0 64 64" fill="none">
+            <rect x="22" y="8" width="20" height="48" rx="5" stroke="#F5F5F0" stroke-width="1"/>
+            <line x1="22" y1="46" x2="42" y2="46" stroke="#F5F5F0" stroke-width="1"/>
+            <circle cx="32" cy="51" r="1.6" fill="#D4AF37"/>
+            <circle cx="32" cy="28" r="6" stroke="#C9F24D" stroke-width="0.8"/>
+          </svg>
+          <ul class="card-list">
+            <li>Android</li><li>iOS</li><li>Flutter</li><li>Cross-platform applications</li>
+          </ul>
+          <a href="#contact" class="card-link">Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
+
+        <div class="card light reveal">
+          <div>
+            <div class="card-num">04</div>
+            <div class="card-title">Software Engineering</div>
+          </div>
+          <svg class="card-art" viewBox="0 0 64 64" fill="none">
+            <rect x="8" y="10" width="20" height="20" rx="3" stroke="#0D0D0D" stroke-width="1"/>
+            <rect x="36" y="10" width="20" height="20" rx="3" stroke="#0D0D0D" stroke-width="1"/>
+            <rect x="22" y="34" width="20" height="20" rx="3" stroke="#D4AF37" stroke-width="1"/>
+            <line x1="28" y1="20" x2="36" y2="20" stroke="#0D0D0D" stroke-width="1"/>
+            <line x1="32" y1="30" x2="32" y2="34" stroke="#0D0D0D" stroke-width="1"/>
+          </svg>
+          <ul class="card-list">
+            <li>Custom software</li><li>Internal platforms</li><li>Dashboards</li><li>Integrations and automation</li>
+          </ul>
+          <a href="#contact" class="card-link">Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="eyebrow-row reveal">
+        <h2 class="section-heading">From idea to <span class="mark">production</span></h2>
+        <p class="section-sub">Our process is built for clarity at every stage, from first conversation to shipped software.</p>
+      </div>
+
+      <div class="process-line reveal">
+        <div class="process-step active">
+          <div class="process-node"></div>
+          <div class="process-step-num">01 — DISCOVER</div>
+          <div class="process-step-title">Discover</div>
+          <div class="process-step-desc">Understand the problem, users, requirements and constraints.</div>
+        </div>
+        <div class="process-step active">
+          <div class="process-node"></div>
+          <div class="process-step-num">02 — DESIGN</div>
+          <div class="process-step-title">Design</div>
+          <div class="process-step-desc">Define the product experience, architecture and technical direction.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-node"></div>
+          <div class="process-step-num">03 — BUILD</div>
+          <div class="process-step-title">Build</div>
+          <div class="process-step-desc">Engineer the application, AI systems, APIs, infrastructure and integrations.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-node"></div>
+          <div class="process-step-num">04 — SHIP</div>
+          <div class="process-step-title">Ship</div>
+          <div class="process-step-desc">Deploy, test, monitor and prepare the product for real-world use.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY ONEONN -->
+    <section id="why">
+      <div class="eyebrow-row reveal">
+        <h2 class="section-heading">Built differently.</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="why-num">01</div>
+          <div class="why-title">Engineering first</div>
+          <div class="why-quote">We care about what happens after the design leaves Figma.</div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">02</div>
+          <div class="why-title">AI native</div>
+          <div class="why-quote">AI isn't an afterthought. We design products with intelligence from the beginning.</div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">03</div>
+          <div class="why-title">Full ownership</div>
+          <div class="why-quote">Your product, source code, infrastructure and documentation remain yours.</div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">04</div>
+          <div class="why-title">Built to evolve</div>
+          <div class="why-quote">Your first version should create a foundation, not technical debt.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAYFUL BANNER -->
+    <section style="padding-top:0;">
+      <div class="playful reveal">
+        <div>
+          <h3>Software doesn't have to feel boring.</h3>
+          <p>We like systems that are reliable underneath and interesting on the surface.</p>
+          <a href="#contact" class="btn btn-solid">Let's build
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
+        <svg class="mascot-art" viewBox="0 0 300 260" fill="none">
+          <g class="orbit-slow">
+            <ellipse cx="150" cy="130" rx="120" ry="46" stroke="#0D0D0D" stroke-opacity="0.15" stroke-width="1"/>
+          </g>
+          <path d="M40 60 l6 0 M43 57 l0 6" stroke="#0D0D0D" stroke-opacity="0.4" stroke-width="1.2"/>
+          <path d="M255 190 l7 0 M258.5 186.5 l0 7" stroke="#0D0D0D" stroke-opacity="0.4" stroke-width="1.2"/>
+          <path d="M235 55 l5 5 M240 55 l-5 5" stroke="#D4AF37" stroke-opacity="0.7" stroke-width="1.3"/>
+          <circle cx="60" cy="180" r="3" fill="#C9F24D"/>
+          <circle cx="245" cy="95" r="2.5" fill="#0D0D0D" opacity="0.5"/>
+
+          <!-- mascot body -->
+          <ellipse cx="150" cy="150" rx="42" ry="38" fill="#0D0D0D"/>
+          <circle cx="136" cy="142" r="5" fill="#F5F5F0"/>
+          <circle cx="164" cy="142" r="5" fill="#F5F5F0"/>
+          <circle cx="136" cy="143" r="2" fill="#0D0D0D"/>
+          <circle cx="164" cy="143" r="2" fill="#0D0D0D"/>
+          <path d="M140 160 Q150 166 160 160" stroke="#F5F5F0" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="150" cy="150" r="50" stroke="#0D0D0D" stroke-opacity="0.2" stroke-width="1" class="orbit"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section id="contact">
+      <div class="final-cta reveal">
+        <div>
+          <h2>Have an idea?<br>Let's build it.</h2>
+          <p>Tell us what you're trying to create. We'll help you figure out the technical path.</p>
+          <a href="mailto:hello@oneonn.com" class="btn btn-solid">Start a project
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+          </a>
+        </div>
+        <svg viewBox="0 0 260 260" fill="none">
+          <g class="orbit">
+            <ellipse cx="130" cy="130" rx="100" ry="40" stroke="#0D0D0D" stroke-opacity="0.16" stroke-width="1"/>
+          </g>
+          <circle cx="130" cy="130" r="46" fill="#0D0D0D"/>
+          <circle cx="118" cy="118" r="10" fill="#2B2B2B" fill-opacity="0.7"/>
+          <path d="M110 145 L155 128" stroke="#D4AF37" stroke-width="1" stroke-opacity="0.6"/>
+          <circle cx="200" cy="90" r="3" fill="#D4AF37"/>
+          <circle cx="60" cy="170" r="3" fill="#C9F24D"/>
+          <circle cx="60" cy="80" r="2.5" fill="#0D0D0D" opacity="0.5"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand-name">oneonn</span>
+          <span class="brand-tag">intelligence • rewritten</span>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navigate</div>
+          <a href="#services">Solutions</a>
+          <a href="#process">Process</a>
+          <a href="#why">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <span>AI &amp; ML</span>
+          <span>Web</span>
+          <span>Mobile</span>
+          <span>Software</span>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Connect</div>
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">X</a>
+          <a href="mailto:hello@oneonn.com">hello@oneonn.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 oneonn</span>
+        <span>developer.oneonn.com</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
 </body>
 </html>
