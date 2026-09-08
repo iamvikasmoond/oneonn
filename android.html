@@ -35,6 +35,14 @@
     letter-spacing:-0.02em;
     margin:0;
   }
+  .brand-mark{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+  border-radius:6px;      /* rounded, matches the old mark's radius */
+  object-fit:cover;
+  display:block;
+}
   a{color:inherit;text-decoration:none;}
   img,svg{display:block;max-width:100%;}
   ::selection{background:var(--gold);color:var(--black);}
@@ -221,15 +229,12 @@
     <!-- NAV -->
     <nav>
       <div class="brand">
-        <svg class="brand-mark" viewBox="0 0 24 24" fill="none">
-          <rect x="2" y="2" width="20" height="20" rx="6" transform="rotate(15 12 12)" stroke="#0D0D0D" stroke-width="1.4"/>
-          <circle cx="12" cy="12" r="2.6" fill="#0D0D0D"/>
-        </svg>
-        <div class="brand-text">
-          <span class="brand-name">oneonn</span>
-          <span class="brand-tag">intelligence • rewritten</span>
-        </div>
-      </div>
+  <img class="brand-mark" src="https://raw.githubusercontent.com/iamvikasmoond/oneonn/refs/heads/main/Files/Github/OneOne%20Logo%20File/oneonn%20(512%20x%20512%20px).png" alt="oneonn logo">
+  <div class="brand-text">
+    <span class="brand-name">oneonn</span>
+    <span class="brand-tag">intelligence • rewritten</span>
+  </div>
+</div>
       <ul class="nav-links">
         <li><a href="index.html#services">Solutions</a></li>
         <li><a href="index.html#process">Process</a></li>
