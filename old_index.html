@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "OneONN",
+    "url": "https://oneonn.com",
+    "logo": "https://oneonn.com/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/oneonn",
+      "https://x.com/oneonn"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "OneONN",
+    "url": "https://oneonn.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://oneonn.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title & Description -->
+  <title>OneONN | intelligence • rewritten</title>
+  <meta name="description" content="OneONN is an AI-first company focused on neural networks, cybersecurity, and intelligent systems. Intelligence • rewritten." />
+  <meta name="keywords" content="AI, Artificial Intelligence, OneONN, Neural Networks, Cybersecurity, Machine Learning, Deep Learning, Automation, LLMs, AI Research, AI Blog" />
+  <meta name="author" content="OneONN Technologies" />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OneONN | Intelligence • Rewritten" />
+  <meta property="og:description" content="Explore AI, ML, and cybersecurity solutions from OneONN — intelligence, rewritten." />
+  <meta property="og:image" content="https://yourdomain.com/assets/og-preview.jpg" />
+  <meta property="og:url" content="https://oneonn.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OneONN | Intelligence • Rewritten" />
+  <meta name="twitter:description" content="AI-first platform offering neural solutions for real-world challenges." />
+  <meta name="twitter:image" content="https://yourdomain.com/assets/twitter-preview.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://raw.githubusercontent.com/iamvikasmoond/oneonn/main/Files/Github/OneOne%20Logo%20File/favicon.ico" type="image/x-icon" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Playfair+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/iamvikasmoond/oneonn/refs/heads/main/Files/Github/OneOne%20Logo%20File/3A3F825D-7847-43BD-8F8F-AE699BB95AC7.png" alt="OneONN" class="logo-img" />
+    </div>
+
+    <nav class="nav-center">
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">About Us</a>
+      <div class="dropdown">
+        <button class="dot-dropdown">⋯</button>
+        <div class="dropdown-content">
+          <a href="#">Contact Us</a>
+          <a href="#">Pricing</a>
+          <a href="#">Investors</a>
+          <a href="#">Career</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="right-header desktop-right">
+      <span class="material-icons" onclick="openSearch()">search</span>
+      <a href="#" class="signin-link">Sign in</a>
+      <a href="#" class="subscribe-btn">Subscribe</a>
+    </div>
+
+    <div class="right-header mobile-right">
+      <span class="material-icons" onclick="openSearch()">search</span>
+      <button class="menu-btn">
+        <span class="material-icons">menu</span>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <div class="search-header">
+        <span class="material-icons" onclick="closeSearch()">close</span>
+        <input type="text" id="searchInput" placeholder="I’m searching for...">
+        <button onclick="closeSearch()">Cancel</button>
+      </div>
+      <div class="search-results" id="searchResults">
+        <!-- Search results will populate dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Maintenance Section -->
+  <main class="maintenance-container">
+    <div class="maintenance-box">
+      <h1>We're Updating Things...</h1>
+      <p>Our team is currently improving the OneONN experience. During this time, some features or pages may be unavailable.</p>
+
+      <div class="info">
+        <h2>Are you an existing user?</h2>
+        <p>Please check your email you’ve received a secure link and credentials to access your platform.</p>
+      </div>
+
+      <div class="info">
+        <h2>New here?</h2>
+        <p>We're glad you're interested! You can reach out to us at <a href="mailto:mail@oneonn.com">mail@oneonn.com</a> and we’ll get back to you shortly.</p>
+      </div>
+
+      <p style="margin-top: 2rem; font-size: 0.95rem;">Thank you for your patience OneONN will be back smarter and faster!</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-left">
+        <h2>Sign up to receive updates<br>and the latest news from OneONN.</h2>
+        <button class="subscribe-btn">Subscribe</button>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-links">
+          <ul>
+            <li><a href="/products.html">Products</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Use</a></li>
+          </ul>
+          <ul>
+            <li><a href="https://x.com/oneonn" target="_blank">X</a></li>
+            <li><a href="https://facebook.com/oneonn" target="_blank">Facebook</a></li>
+            <li><a href="https://linkedin.com/company/oneonn" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/oneonn" target="_blank">GitHub</a></li>
+            <li><a href="https://blog.oneonn.com" target="_blank">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 OneONN <b>intelligence • rewritten</b> </p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    function openSearch() {
+      document.getElementById('searchOverlay').style.display = 'flex';
+    }
+
+    function closeSearch() {
+      document.getElementById('searchOverlay').style.display = 'none';
+    }
+
+    function filterSearchResults(query) {
+      const results = document.getElementById('searchResults');
+      results.innerHTML = `<div>Searching for: <strong>${query}</strong></div>`;
+    }
+  </script>
+</body>
+</html>
